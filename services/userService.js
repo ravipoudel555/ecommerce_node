@@ -1,5 +1,5 @@
 const { User } = require("../models");
-const bcrypt = require("bcrypt");
+
 const jwt = require("jsonwebtoken");
 
 const signup = (req, res) => {
@@ -48,7 +48,9 @@ const login = (req, res) => {
           const token = jwt.sign({ id: user.id, email: user.email }, "secret", {
             expiresIn: "1hr",
           });
-          return res.status(200).json({ msg: "Auth successful", token });
+          return res
+            .status(200)
+            .json({ msg: "Auth successful", token, email: user.email });
         } else {
           return res.status(401).json({
             msg: "Auth failed: incorrect password",

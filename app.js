@@ -6,7 +6,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
+app.use(express.static(__dirname + "/public"));
 app.use(logger("dev"));
 //database connection check
 const port = process.env.PORT || 3000;
@@ -25,3 +25,4 @@ sequelize
 //passport initialization
 
 app.use("/users", require("./routes/userRoute"));
+app.use("/products", require("./routes/productRoute"));

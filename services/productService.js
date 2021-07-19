@@ -5,7 +5,7 @@ const getAllProducts = (req, res) => {
     .then((products) => {
       //  res.status(200).json(products);
       //res.status(200).json(productList);
-      res.status(200).json(products);
+      res.status(200).json({ products });
       // res.status(200).json(image);
     })
     .catch((err) => console.log(err));
